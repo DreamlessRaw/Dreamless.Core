@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/DreamlessRaw/Dreamless.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DreamlessRaw/Dreamless.Core</RepositoryUrl>
+    <Copyright>https://github.com/DreamlessRaw/Dreamless.Core</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
