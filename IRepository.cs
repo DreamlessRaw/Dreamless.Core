@@ -26,7 +26,7 @@ namespace Dreamless.Core
         /// <param name="predicate">条件</param>
         /// <param name="disableTracking">默认不跟踪查询</param>
         /// <returns></returns>
-        IEnumerable<TEntity> QueryList(Expression<Func<TEntity, bool>> predicate,
+        List<TEntity> QueryList(Expression<Func<TEntity, bool>> predicate,
                                                   bool disableTracking = true);
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Dreamless.Core
         /// <param name="selector">字段信息</param>
         /// <param name="disableTracking">默认不跟踪查询</param>
         /// <returns></returns>
-        IEnumerable<TResult> QueryList<TResult>(Expression<Func<TEntity, TResult>> selector,
+        List<TResult> QueryList<TResult>(Expression<Func<TEntity, TResult>> selector,
                                                   Expression<Func<TEntity, bool>> predicate = null,
                                                   bool disableTracking = true) where TResult : class;
 

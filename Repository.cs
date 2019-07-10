@@ -42,7 +42,7 @@ namespace Dreamless.Core
             return _dbSet.WhereToPagedList(searchModel);
         }
 
-        public virtual IEnumerable<TEntity> QueryList(Expression<Func<TEntity, bool>> predicate, bool disableTracking = true)
+        public virtual List<TEntity> QueryList(Expression<Func<TEntity, bool>> predicate, bool disableTracking = true)
         {
             IQueryable<TEntity> query = _dbSet;
             if (disableTracking)
@@ -51,14 +51,14 @@ namespace Dreamless.Core
             }
             return query.Where(predicate).ToList();
         }
-        public IEnumerable<TResult> QueryList<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>> predicate = null, bool disableTracking = true) where TResult : class
+        public List<TResult> QueryList<TResult>(Expression<Func<TEntity, TResult>> selector, Expression<Func<TEntity, bool>> predicate = null, bool disableTracking = true) where TResult : class
         {
             IQueryable<TEntity> query = _dbSet;
             if (disableTracking)
             {
                 query = query.AsNoTracking();
             }
-            if (predicate == null)
+            if (predicate != null)
             {
                 return query.Where(predicate).Select(selector).ToList();
             }
