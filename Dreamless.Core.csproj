@@ -5,7 +5,8 @@
     <PackageProjectUrl>https://github.com/DreamlessRaw/Dreamless.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DreamlessRaw/Dreamless.Core</RepositoryUrl>
     <Copyright>https://github.com/DreamlessRaw/Dreamless.Core</Copyright>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
+    <PackageReleaseNotes>添加直接保存返回bool的方法</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
