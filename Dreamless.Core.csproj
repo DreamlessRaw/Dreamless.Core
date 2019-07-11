@@ -5,6 +5,7 @@
     <PackageProjectUrl>https://github.com/DreamlessRaw/Dreamless.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DreamlessRaw/Dreamless.Core</RepositoryUrl>
     <Copyright>https://github.com/DreamlessRaw/Dreamless.Core</Copyright>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

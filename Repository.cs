@@ -244,5 +244,23 @@ namespace Dreamless.Core
             }
             return query;
         }
+
+        public virtual bool Insert(TEntity entity, bool isSave)
+        {
+            _dbSet.Add(entity);
+            return _dbContext.SaveChanges() > 0;
+        }
+
+        public bool Update(TEntity entity, bool isSave)
+        {
+            _dbSet.Update(entity);
+            return _dbContext.SaveChanges() > 0;
+        }
+
+        public bool Delete(TEntity entity, bool isSave)
+        {
+            _dbSet.Remove(entity);
+            return _dbContext.SaveChanges() > 0;
+        }
     }
 }

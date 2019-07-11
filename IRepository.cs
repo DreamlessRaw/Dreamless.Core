@@ -87,6 +87,13 @@ namespace Dreamless.Core
         void Insert(TEntity entity);
 
         /// <summary>
+        /// 直接保存，无需调用SaveChanges();
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        bool Insert(TEntity entity, bool isSave);
+
+        /// <summary>
         /// Inserts a range of entities synchronously.
         /// </summary>
         /// <param name="entities">The entities to insert.</param>
@@ -126,6 +133,11 @@ namespace Dreamless.Core
         /// </summary>
         /// <param name="entity">The entity.</param>
         void Update(TEntity entity);
+        /// <summary>
+        /// 直接保存，无需调用SaveChanges();
+        /// </summary>
+        /// <param name="entity"></param>
+        bool Update(TEntity entity, bool isSave);
 
         /// <summary>
         /// Updates the specified entities.
@@ -150,6 +162,11 @@ namespace Dreamless.Core
         /// </summary>
         /// <param name="entity">The entity to delete.</param>
         void Delete(TEntity entity);
+        /// <summary>
+        /// 直接保存，无需调用SaveChanges();
+        /// </summary>
+        /// <param name="entity"></param>
+        bool Delete(TEntity entity, bool isSave);
 
         /// <summary>
         /// Deletes the specified entities.
