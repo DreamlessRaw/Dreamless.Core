@@ -20,6 +20,13 @@ namespace Dreamless.Core
         PagedList<TEntity> QueryPagedList(SearchModel searchModel, bool disableTracking = true);
 
         /// <summary>
+        /// 获取分页数据,只查询需要的数据
+        /// </summary>
+        /// <param name="searchModel">searchModel</param>
+        /// <returns></returns>
+        PagedList<TResult> QueryPagedList<TResult>(SearchModel searchModel, Expression<Func<TEntity, TResult>> selector) where TResult : class;
+
+        /// <summary>
         /// 查询符合条件的数据,全部字段
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>

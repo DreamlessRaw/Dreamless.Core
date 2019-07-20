@@ -42,6 +42,10 @@ namespace Dreamless.Core
             return _dbSet.WhereToPagedList(searchModel);
         }
 
+        public virtual PagedList<TResult> QueryPagedList<TResult>(SearchModel searchModel, Expression<Func<TEntity, TResult>> selector) where TResult : class
+        {
+            return _dbSet.Where(searchModel).Select(selector).Pager(searchModel);
+        }
         public virtual List<TEntity> QueryList(Expression<Func<TEntity, bool>> predicate, bool disableTracking = true)
         {
             IQueryable<TEntity> query = _dbSet;
