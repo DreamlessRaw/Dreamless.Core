@@ -27,6 +27,14 @@ namespace Dreamless.Core
         PagedList<TResult> QueryPagedList<TResult>(SearchModel searchModel, Expression<Func<TEntity, TResult>> selector) where TResult : class;
 
         /// <summary>
+        /// 获取分页数据并映射Mapper
+        /// </summary>
+        /// <typeparam name="TResult">返回类型</typeparam>
+        /// <param name="searchModel">searchModel</param>
+        /// <returns></returns>
+        PagedList<TResult> QueryPagedMappingList<TResult>(SearchModel searchModel) where TResult : class;
+
+        /// <summary>
         /// 查询符合条件的数据,全部字段
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
@@ -47,6 +55,14 @@ namespace Dreamless.Core
         List<TResult> QueryList<TResult>(Expression<Func<TEntity, TResult>> selector,
                                                   Expression<Func<TEntity, bool>> predicate = null,
                                                   bool disableTracking = true) where TResult : class;
+
+        /// <summary>
+        /// 查询并映射Mapper
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="predicate">条件</param>
+        /// <returns></returns>
+        List<TResult> QueryMappingList<TResult>(Expression<Func<TEntity, bool>> predicate = null) where TResult : class;
 
 
         /// <summary>

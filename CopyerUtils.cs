@@ -7,7 +7,33 @@ namespace Dreamless.Core
 {
     public static class CopyerUtils
     {
+        [Obsolete("使用CopyerTo,更符合命名规范")]
         public static TResult Copyer<TSource, TResult>(this TSource source, TResult result)
+        {
+            var ps = typeof(TSource).GetProperties();
+            var pr = typeof(TResult).GetProperties();
+            foreach (var pItem in ps)
+            {
+                var obj = pItem.GetValue(source);
+                foreach (var rItem in pr)
+                {
+                    if (pItem.Name == rItem.Name)
+                    {
+                        rItem.SetValue(result, obj);
+                    }
+                }
+            }
+            return result;
+        }
+        /// <summary>
+        /// 反射
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="source">数据源</param>
+        /// <param name="result">返回结果</param>
+        /// <returns></returns>
+        public static TResult CopyerTo<TSource, TResult>(this TSource source, TResult result)
         {
             var ps = typeof(TSource).GetProperties();
             var pr = typeof(TResult).GetProperties();

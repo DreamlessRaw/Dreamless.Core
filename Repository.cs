@@ -46,6 +46,18 @@ namespace Dreamless.Core
         {
             return _dbSet.Where(searchModel).Select(selector).Pager(searchModel);
         }
+
+        /// <summary>
+        /// 映射Mapper
+        /// </summary>
+        /// <typeparam name="TResult">返回类型</typeparam>
+        /// <param name="searchModel">searchModel</param>
+        /// <returns></returns>
+        public virtual PagedList<TResult> QueryPagedMappingList<TResult>(SearchModel searchModel) where TResult : class
+        { 
+            return _dbSet.Where(searchModel).SelectAndMapper<TResult>().Pager(searchModel);
+        }
+
         public virtual List<TEntity> QueryList(Expression<Func<TEntity, bool>> predicate, bool disableTracking = true)
         {
             IQueryable<TEntity> query = _dbSet;
@@ -69,6 +81,18 @@ namespace Dreamless.Core
             else
             {
                 return query.Select(selector).ToList();
+            }
+        }
+        public List<TResult> QueryMappingList<TResult>(Expression<Func<TEntity, bool>> predicate = null) where TResult : class
+        {
+            IQueryable<TEntity> query = _dbSet;
+            if (predicate != null)
+            {
+                return query.AsNoTracking().Where(predicate).SelectAndMapper<TResult>().ToList();
+            }
+            else
+            {
+                return query.AsNoTracking().SelectAndMapper<TResult>().ToList();
             }
         }
 

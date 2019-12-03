@@ -20,6 +20,5 @@ namespace Dreamless.Core
         {
             Configuration = config;
         }
-
     }
 }
