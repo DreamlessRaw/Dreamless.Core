@@ -16,7 +16,7 @@ namespace Dreamless.Core
             };
         }
 
-        public static ApiResult<T> Ok<T>(T data, int count = 0)
+        public static ApiResult<T> Ok<T>(T data, Int64 count = 0)
         {
             return new ApiResult<T>()
             {
@@ -28,7 +28,7 @@ namespace Dreamless.Core
         }
         public string Message { get; set; }
         public bool IsSuccess { get; set; }
-        public int Count { get; set; }
+        public Int64 Count { get; set; }
     }
     public class ApiResult<T> : ApiResult
     {

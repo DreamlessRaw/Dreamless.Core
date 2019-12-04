@@ -39,7 +39,7 @@ namespace Dreamless.Core
             {
                 query = query.AsNoTracking();
             }
-            return _dbSet.WhereToPagedList(searchModel);
+            return query.WhereToPagedList(searchModel);
         }
 
         public virtual PagedList<TResult> QueryPagedList<TResult>(SearchModel searchModel, Expression<Func<TEntity, TResult>> selector) where TResult : class
