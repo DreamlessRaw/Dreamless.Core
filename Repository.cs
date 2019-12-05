@@ -54,7 +54,7 @@ namespace Dreamless.Core
         /// <param name="searchModel">searchModel</param>
         /// <returns></returns>
         public virtual PagedList<TResult> QueryPagedMappingList<TResult>(SearchModel searchModel) where TResult : class
-        { 
+        {
             return _dbSet.Where(searchModel).SelectAndMapper<TResult>().Pager(searchModel);
         }
 
@@ -273,35 +273,61 @@ namespace Dreamless.Core
             return query;
         }
 
-        public virtual bool Insert(TEntity entity, bool isSave)
+        public virtual bool InsertSaveChange(TEntity entity)
         {
             _dbSet.Add(entity);
-            if (isSave)
-            {
-                return _dbContext.SaveChanges() > 0;
-            }
-            return false;
+            return _dbContext.SaveChanges() > 0;
         }
 
-        public bool Update(TEntity entity, bool isSave)
+        public virtual bool InsertSaveChange(List<TEntity> entity)
+        {
+            _dbSet.AddRange(entity);
+            return _dbContext.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Update and Save
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool UpdateSaveChange(TEntity entity)
         {
             _dbSet.Update(entity);
-            if (isSave)
-            {
-                return _dbContext.SaveChanges() > 0;
-            }
-            return false;
+            return _dbContext.SaveChanges() > 0;
         }
 
-        public bool Delete(TEntity entity, bool isSave)
+        /// <summary>
+        /// Update and Save
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool UpdateSaveChange(List<TEntity> entity)
+        {
+            _dbSet.UpdateRange(entity);
+            return _dbContext.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Delete And Save
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool DeleteSaveChanges(TEntity entity)
         {
             _dbSet.Remove(entity);
-            _dbSet.Update(entity);
-            if (isSave)
-            {
-                return _dbContext.SaveChanges() > 0;
-            }
-            return false;
+            return _dbContext.SaveChanges() > 0;
         }
+
+        /// <summary>
+        /// Delete And Save
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool DeleteSaveChanges(List<TEntity> entity)
+        {
+            _dbSet.RemoveRange(entity);
+            return _dbContext.SaveChanges() > 0;
+        }
+
     }
 }

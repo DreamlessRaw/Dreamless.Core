@@ -5,9 +5,8 @@
     <PackageProjectUrl>https://github.com/DreamlessRaw/Dreamless.Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DreamlessRaw/Dreamless.Core</RepositoryUrl>
     <Copyright>https://github.com/DreamlessRaw/Dreamless.Core</Copyright>
-    <Version>1.6.0</Version>
-    <PackageReleaseNotes>弃用Copyer,使用CopyerTo,更符合命名规范;
-SelectAndMapper,待测试</PackageReleaseNotes>
+    <Version>1.7.0</Version>
+    <PackageReleaseNotes>QueryPagedList不跟踪查询问题</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

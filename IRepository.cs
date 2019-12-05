@@ -82,22 +82,22 @@ namespace Dreamless.Core
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate = null, bool disableTracking = false);
 
         /// <summary>
-        /// 获取数据(Sql)
+        /// Query then Table
         /// </summary>
-        /// <param name="sql">要执行的sql</param>
-        /// <param name="parameters">参数</param>
+        /// <param name="sql">exec statement</param>
+        /// <param name="parameters">param</param>
         /// <returns></returns>
         IEnumerable<TEntity> FromSql(string sql, params object[] parameters);
 
         /// <summary>
-        /// 获取总行数
+        /// Gets the total number of rows
         /// </summary>
-        /// <param name="predicate">条件</param>
+        /// <param name="predicate"></param>
         /// <returns></returns>
         int Count(Expression<Func<TEntity, bool>> predicate = null);
 
         /// <summary>
-        /// 数据是否存在
+        /// Does the data exist
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
@@ -109,12 +109,6 @@ namespace Dreamless.Core
         /// <param name="entity">The entity to insert.</param>
         void Insert(TEntity entity);
 
-        /// <summary>
-        /// 直接保存，无需调用SaveChanges();
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        bool Insert(TEntity entity, bool isSave);
 
         /// <summary>
         /// Inserts a range of entities synchronously.
@@ -156,11 +150,6 @@ namespace Dreamless.Core
         /// </summary>
         /// <param name="entity">The entity.</param>
         void Update(TEntity entity);
-        /// <summary>
-        /// 直接保存，无需调用SaveChanges();
-        /// </summary>
-        /// <param name="entity"></param>
-        bool Update(TEntity entity, bool isSave);
 
         /// <summary>
         /// Updates the specified entities.
@@ -185,11 +174,6 @@ namespace Dreamless.Core
         /// </summary>
         /// <param name="entity">The entity to delete.</param>
         void Delete(TEntity entity);
-        /// <summary>
-        /// 直接保存，无需调用SaveChanges();
-        /// </summary>
-        /// <param name="entity"></param>
-        bool Delete(TEntity entity, bool isSave);
 
         /// <summary>
         /// Deletes the specified entities.
@@ -202,5 +186,47 @@ namespace Dreamless.Core
         /// </summary>
         /// <param name="entities">The entities.</param>
         void Delete(IEnumerable<TEntity> entities);
+
+        /// <summary>
+        /// Add and Save
+        /// </summary>
+        /// <param name="entity">The entities.</param>
+        /// <returns></returns>
+        bool InsertSaveChange(TEntity entity);
+
+        /// <summary>
+        /// Add and Save
+        /// </summary>
+        /// <param name="entity">The entities.</param>
+        /// <returns></returns>
+        bool InsertSaveChange(List<TEntity> entity);
+
+        /// <summary>
+        /// Update and Save
+        /// </summary>
+        /// <param name="entity">The entities.</param>
+        /// <returns></returns>
+        bool UpdateSaveChange(TEntity entity);
+
+        /// <summary>
+        /// Update and Save
+        /// </summary>
+        /// <param name="entity">The entities.</param>
+        /// <returns></returns>
+        bool UpdateSaveChange(List<TEntity> entity);
+
+        /// <summary>
+        /// Delete And Save
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        bool DeleteSaveChanges(TEntity entity);
+
+        /// <summary>
+        /// Delete And Save
+        /// </summary>
+        /// <param name="entity">The entities.</param>
+        /// <returns></returns>
+        bool DeleteSaveChanges(List<TEntity> entity);
     }
 }
