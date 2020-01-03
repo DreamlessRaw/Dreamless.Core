@@ -14,11 +14,8 @@ namespace Dreamless.Core
         /// <returns></returns>
         public static SearchModel GetSearchModel(this SearchModel searchModel, string sortName = "Id", string sortOrder = "Desc")
         {
-            if (string.IsNullOrWhiteSpace(searchModel.SortName))
-            {
-                searchModel.SortName = "Id";
-                searchModel.SortOrder = "Desc";
-            }
+            searchModel.SortName = sortName;
+            searchModel.SortOrder = sortOrder;
             return searchModel;
         }
     }
