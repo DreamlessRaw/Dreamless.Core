@@ -128,7 +128,7 @@ namespace Dreamless.Core
         /// <param name="entity">The entity to insert.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous insert operation.</returns>
-        Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken));
+        ValueTask<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<TEntity>> InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Inserts a range of entities asynchronously.

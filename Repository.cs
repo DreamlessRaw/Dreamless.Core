@@ -141,7 +141,7 @@ namespace Dreamless.Core
         /// <param name="entity">The entity to insert.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous insert operation.</returns>
-        public virtual Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual ValueTask<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<TEntity>> InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken))
         {
             return _dbSet.AddAsync(entity, cancellationToken);
 
@@ -259,7 +259,7 @@ namespace Dreamless.Core
             }
         }
 
-        IEnumerable<TEntity> IRepository<TEntity>.FromSql(string sql, params object[] parameters) => _dbSet.FromSql(sql, parameters).ToList();
+        IEnumerable<TEntity> IRepository<TEntity>.FromSql(string sql, params object[] parameters) => _dbSet.FromSqlRaw(sql, parameters).ToList();
 
         public bool Any(Expression<Func<TEntity, bool>> predicate) => _dbSet.Any(predicate);
 
